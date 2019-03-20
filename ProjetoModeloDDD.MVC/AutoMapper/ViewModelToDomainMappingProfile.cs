@@ -1,22 +1,26 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using ProjetoModeloDDD.Domain.Entities;
+using ProjetoModeloDDD.MVC.ViewModels;
 
 namespace ProjetoModeloDDD.MVC.AutoMapper
 {
     public class ViewModelToDomainMappingProfile : Profile
     {
+        public ViewModelToDomainMappingProfile()
+        {
+            CreateMap<Cliente, ClienteViewModel>();
+            CreateMap<Produto, ProdutoViewModel>();
+        }
+
         public override string ProfileName
         {
             get { return "DomainToViewModelMappings"; }
         }
 
-        protected override void Configure()
-        {
-            Mapper.Map<ClienteViewModel>(Cliente);
-            Mapper.Map<ProdutoViewModel>(Produto);
-        }
+        //protected override void Configure()
+        //{
+        //    //Mapper.Map<ClienteViewModel>(Cliente);
+        //    //Mapper.Map<ProdutoViewModel>(Produto);
+        //}
     }
 }

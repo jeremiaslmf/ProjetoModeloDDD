@@ -10,15 +10,15 @@ namespace ProjetoModeloDDD.MVC.AutoMapper
 {
     public class DomainToViewModelMappingProfile : Profile
     {
+        public DomainToViewModelMappingProfile()
+        {
+            CreateMap<ClienteViewModel, Cliente>();
+            CreateMap<ProdutoViewModel, Produto>();
+        }
+
         public override string ProfileName
         {
             get { return "ViewModelToDomainMappings"; }
-        }
-
-        protected override void Configure()
-        {
-            Mapper.Map<ClienteViewModel>(Cliente);
-            Mapper.Map<ProdutoViewModel>(Produto);
         }
     }
 }
