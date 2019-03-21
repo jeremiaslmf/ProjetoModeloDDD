@@ -37,6 +37,10 @@ namespace ProjetoModeloDDD.Infrastructure.Data.Context
             /// Define automaticamente as propriedades do tipo string com tamanho maximo de 100
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasMaxLength(100));
+
+            /// Define que as propriedades do tipo Datetime correspondem a datetime2 (problema que estava ocorrendo)
+            modelBuilder.Properties<DateTime>()
+                .Configure(c => c.HasColumnType("datetime2"));
             #endregion
 
             #region Configurações
@@ -51,12 +55,25 @@ namespace ProjetoModeloDDD.Infrastructure.Data.Context
             foreach (var entry in ChangeTracker.Entries().Where(entry => entry.GetType().GetProperty("DataCadastro") != null))
             {
                 if (entry.State == EntityState.Added)
-                    entry.Property("DataCadastro").CurrentValue = DateTime.Now;
+                    entry.Property("DataCadastro").CurrentValue = DateTime.Today;
 
                 if (entry.State == EntityState.Modified)
                     entry.Property("DataCadastro").IsModified = false;
             }
             return base.SaveChanges();
+        }
+
+
+        /// <summary>
+        /// Este cara aqui resolve o problema que do ADO com o Enity
+        /// </summary>
+        private void FixEfProviderServicesProblem()
+        {
+            // The Entity Framework provider type 'System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer'
+            // for the 'System.Data.SqlClient' ADO.NET provider could not be loaded. 
+            // Make sure the provider assembly is available to the running application. 
+            // See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.
+            var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
     }
 }

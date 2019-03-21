@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetoModeloDDD.Domain.Entities
 {
@@ -9,6 +10,7 @@ namespace ProjetoModeloDDD.Domain.Entities
         public string Nome { get; set; }
         public string SobreNome { get; set; }
         public string Email { get; set; }
+        [Column(TypeName="datetime2")]
         public DateTime DataCadastro { get; set; }
         public bool Ativo { get; set; }
         public virtual IEnumerable<Produto> Produtos { get; set; }

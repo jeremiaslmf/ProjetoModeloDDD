@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using ProjetoModeloDDD.Application;
+using ProjetoModeloDDD.Application.Interfaces;
 using ProjetoModeloDDD.Domain.Entities;
-using ProjetoModeloDDD.Infrastructure.Data.Repositories;
 using ProjetoModeloDDD.MVC.ViewModels;
-using System.Collections;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -10,19 +10,35 @@ namespace ProjetoModeloDDD.MVC.Controllers
 {
     public class ClientesController : Controller
     {
-        private readonly ClienteRepository _clienteRepository = new ClienteRepository();
+        private readonly IClienteAppService _clienteAppService;
+
+        public ClientesController(IClienteAppService clienteAppService)
+        {
+            _clienteAppService = clienteAppService;
+        }
 
         // GET: Clientes
         public ActionResult Index()
         {
-            var clienteViewModel = Mapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(_clienteRepository.GetAll());
+            var clienteViewModel = Mapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>
+                (_clienteAppService.GetAll());
+            return View(clienteViewModel);
+        }
+
+        // GET: Clientes Especiais
+        public ActionResult Especiais()
+        {
+            var clienteViewModel = Mapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>
+                (_clienteAppService.ObterClientesEspeciais());
             return View(clienteViewModel);
         }
 
         // GET: Clientes/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var cliente = _clienteAppService.GetById(id);
+            var clienteViewModel = Mapper.Map<Cliente, ClienteViewModel>(cliente);
+            return View(clienteViewModel);
         }
 
         // GET: Clientes/Create
@@ -39,7 +55,7 @@ namespace ProjetoModeloDDD.MVC.Controllers
             if (ModelState.IsValid)
             {
                 var clienteDomain = Mapper.Map<ClienteViewModel, Cliente>(clienteView);
-                _clienteRepository.Add(clienteDomain);
+                _clienteAppService.Add(clienteDomain);
                 return RedirectToAction("Index");
             }
             return View(clienteView);
@@ -48,45 +64,40 @@ namespace ProjetoModeloDDD.MVC.Controllers
         // GET: Clientes/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var cliente = _clienteAppService.GetById(id);
+            var clienteViewModel = Mapper.Map<Cliente, ClienteViewModel>(cliente);
+            return View(clienteViewModel);
         }
 
         // POST: Clientes/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(ClienteViewModel clienteView)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                var clienteDomain = Mapper.Map<ClienteViewModel, Cliente>(clienteView);
+                _clienteAppService.Add(clienteDomain);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(clienteView);
         }
 
         // GET: Clientes/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var cliente = _clienteAppService.GetById(id);
+            var clienteView = Mapper.Map<Cliente, ClienteViewModel>(cliente);
+            return View(clienteView);
         }
 
         // POST: Clientes/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var cliente = _clienteAppService.GetById(id);
+            _clienteAppService.Remove(cliente);
+            return RedirectToAction("Index");
         }
     }
 }
