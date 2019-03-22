@@ -26,29 +26,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SobreNome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ativo)
-        </td>
-        <td>
-            <a href="@Url.Action("Edit", new { id = item.Id })" title="Editar" class="btn btn-primary">Editar</a>
-            <a href="@Url.Action("Details", new { id = item.Id })" title="Detalhe" class="btn btn-secondary">Detalhe</a>
-            <a href="@Url.Action("Delete", new { id = item.Id })" title="Excluir" class="btn btn-danger">Exluir</a>
-        </td>
-    </tr>
-}
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SobreNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ativo, new { @class = "checkbox"})
+                @*<div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultChecked2" checked disabled>
+                    <label class="custom-control-label" for="defaultChecked2"></label>
+                </div>*@
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.Id })" title="Editar" class="btn btn-primary">Editar</a>
+                <a href="@Url.Action("Details", new { id = item.Id })" title="Detalhe" class="btn btn-secondary">Detalhe</a>
+                <a href="@Url.Action("Delete", new { id = item.Id })" title="Excluir" class="btn btn-danger">Exluir</a>
+            </td>
+        </tr>
+    }
 
 </table>
