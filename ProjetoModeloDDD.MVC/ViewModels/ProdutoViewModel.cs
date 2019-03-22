@@ -7,7 +7,7 @@ namespace ProjetoModeloDDD.MVC.ViewModels
     public class ProdutoViewModel
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Nome.")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres.")]
@@ -22,7 +22,7 @@ namespace ProjetoModeloDDD.MVC.ViewModels
         [DisplayName("Disponível?")]
         public bool Disponivel { get; set; }
 
-        public Guid ClienteId { get; set; }
+        public int ClienteId { get; set; }
 
         public virtual ClienteViewModel Cliente { get; set; }
     }

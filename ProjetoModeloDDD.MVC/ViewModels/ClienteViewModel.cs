@@ -8,7 +8,7 @@ namespace ProjetoModeloDDD.MVC.ViewModels
     public class ClienteViewModel
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Nome.")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres.")]

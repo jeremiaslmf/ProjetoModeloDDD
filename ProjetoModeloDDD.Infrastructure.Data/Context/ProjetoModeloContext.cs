@@ -38,7 +38,7 @@ namespace ProjetoModeloDDD.Infrastructure.Data.Context
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasMaxLength(100));
 
-            /// Define que as propriedades do tipo Datetime correspondem a datetime2 (problema que estava ocorrendo)
+            ///// Define que as propriedades do tipo Datetime correspondem a datetime2 (problema que estava ocorrendo)
             modelBuilder.Properties<DateTime>()
                 .Configure(c => c.HasColumnType("datetime2"));
             #endregion
@@ -55,7 +55,7 @@ namespace ProjetoModeloDDD.Infrastructure.Data.Context
             foreach (var entry in ChangeTracker.Entries().Where(entry => entry.GetType().GetProperty("DataCadastro") != null))
             {
                 if (entry.State == EntityState.Added)
-                    entry.Property("DataCadastro").CurrentValue = DateTime.Today;
+                    entry.Property("DataCadastro").CurrentValue = DateTime.Now;
 
                 if (entry.State == EntityState.Modified)
                     entry.Property("DataCadastro").IsModified = false;

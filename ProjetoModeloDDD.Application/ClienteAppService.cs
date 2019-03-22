@@ -1,10 +1,11 @@
-﻿using ProjetoModeloDDD.Domain.Entities;
+﻿using ProjetoModeloDDD.Application.Interfaces;
+using ProjetoModeloDDD.Domain.Entities;
 using ProjetoModeloDDD.Domain.Interfaces.Services;
 using System.Collections.Generic;
 
 namespace ProjetoModeloDDD.Application
 {
-    public class ClienteAppService : AppServiceBase<Cliente>, IClienteService
+    public class ClienteAppService : AppServiceBase<Cliente>, IClienteAppService
     {
         private readonly IClienteService _clienteService;
 
@@ -13,7 +14,7 @@ namespace ProjetoModeloDDD.Application
             _clienteService = clienteService;
         }
 
-        public IEnumerable<Cliente> ObterClientesEspeciais(IEnumerable<Cliente> clientes)
+        public IEnumerable<Cliente> ObterClientesEspeciais()
         {
             return _clienteService.ObterClientesEspeciais(_clienteService.GetAll());
         }

@@ -1,3 +1,5 @@
+D:\Projetos\ProjetoModeloDDD\ProjetoModeloDDD.MVC\obj\Debug\ProjetoModeloDDD.MVC.csprojAssemblyReference.cache
+D:\Projetos\ProjetoModeloDDD\ProjetoModeloDDD.MVC\obj\Debug\ProjetoModeloDDD.MVC.csproj.CoreCompileInputs.cache
 D:\Projetos\ProjetoModeloDDD\ProjetoModeloDDD.MVC\bin\ProjetoModeloDDD.MVC.dll.config
 D:\Projetos\ProjetoModeloDDD\ProjetoModeloDDD.MVC\bin\ProjetoModeloDDD.MVC.dll
 D:\Projetos\ProjetoModeloDDD\ProjetoModeloDDD.MVC\bin\ProjetoModeloDDD.MVC.pdb
@@ -105,8 +107,6 @@ D:\Projetos\ProjetoModeloDDD\ProjetoModeloDDD.MVC\bin\pt-br\System.Web.Razor.res
 D:\Projetos\ProjetoModeloDDD\ProjetoModeloDDD.MVC\bin\pt-br\System.Web.WebPages.resources.dll
 D:\Projetos\ProjetoModeloDDD\ProjetoModeloDDD.MVC\bin\pt-br\System.Web.WebPages.Deployment.resources.dll
 D:\Projetos\ProjetoModeloDDD\ProjetoModeloDDD.MVC\bin\pt-br\System.Web.WebPages.Razor.resources.dll
-D:\Projetos\ProjetoModeloDDD\ProjetoModeloDDD.MVC\obj\Debug\ProjetoModeloDDD.MVC.csprojAssemblyReference.cache
-D:\Projetos\ProjetoModeloDDD\ProjetoModeloDDD.MVC\obj\Debug\ProjetoModeloDDD.MVC.csproj.CoreCompileInputs.cache
 D:\Projetos\ProjetoModeloDDD\ProjetoModeloDDD.MVC\obj\Debug\ProjetoModeloDDD.MVC.csproj.CopyComplete
 D:\Projetos\ProjetoModeloDDD\ProjetoModeloDDD.MVC\obj\Debug\ProjetoModeloDDD.MVC.dll
 D:\Projetos\ProjetoModeloDDD\ProjetoModeloDDD.MVC\obj\Debug\ProjetoModeloDDD.MVC.pdb
